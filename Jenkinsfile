@@ -4,7 +4,7 @@ pipeline {
         maven 'maven3'
     }
     environment{
-        SONARQUBE_HOME = 'sonar-scanner'
+        SONARQUBE_HOME = tool 'sonar-scanner'
     }
  stages {
         stage('Clone Repository') {
