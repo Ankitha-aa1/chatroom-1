@@ -30,7 +30,7 @@ pipeline {
         }
         stage('sonarqube analysis') {
             steps{
-                withSonarQubeEnv(credentialsId: 'sonar-cred') {
+                withSonarQubeEnv('sonar-server') {
                     sh ''' $SONARQUBE_HOME/bin/sonar-scanner Dsonar.projectName=chatroom-1 \
                     -Dsonar.projectKey=chatroom-1 -Dsonar.java.binaries=target '''
                 }
