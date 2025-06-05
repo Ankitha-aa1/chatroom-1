@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    // tools{
-    //     maven 'maven3'
-    // }
+    tools{
+        maven 'maven3'
+    }
  stages {
         stage('Clone Repository') {
             steps {
@@ -18,6 +18,11 @@ pipeline {
             steps{
                 sh 'mvn --version'
                 sh 'mvn compile'
+            }
+        }
+        stage('trivy fs'){
+            steps{
+                sh 'trivyfs'
             }
         }
     }
