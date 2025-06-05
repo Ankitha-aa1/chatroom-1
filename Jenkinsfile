@@ -36,6 +36,20 @@ pipeline {
                 }
             }
         }
-        
+        stage('owasp dependency scan'){
+            steps{
+
+            }
+        }
+        stage('build application'){
+            steps{
+                sh 'mvn install -DskiTest'
+            }
+        }
+        stage('run the application'){
+            steps{
+                sh 'mv target/*.war /usr/local/tomcat/webapps/ROOT.war'
+            }
+        }
     }
 }
