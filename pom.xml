@@ -11,6 +11,7 @@
 	<groupId>com.goldencat</groupId>
 	<artifactId>chatapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>chatapp</name>
 	<description>Web Chat App for one to one chat</description>
 	<url/>
