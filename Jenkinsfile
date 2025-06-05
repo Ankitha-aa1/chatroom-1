@@ -3,6 +3,9 @@ pipeline {
     tools{
         maven 'maven3'
     }
+    environment{
+        $SONARQUBE_HOME = 'sonar-scanner'
+    }
  stages {
         stage('Clone Repository') {
             steps {
@@ -25,5 +28,14 @@ pipeline {
                 sh 'trivy fs -o file-scan.html .'
             }
         }
+        stage('sonarqube analysis') {
+            steps{
+                withSonarQubeEnv(credentialsId: 'sonar-cred') {
+                    sh ''' $SONARQUBE_HOME/bin/sonar-scanner Dsonar.projectName=chatroom-1 \
+                    -Dsonar.projectKey=chatroom-1 -Dsonar.java.binaries=target '''
+                }
+            }
+        }
+        
     }
 }
