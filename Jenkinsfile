@@ -44,6 +44,8 @@ pipeline {
         stage('build application'){
             steps{
                 sh 'mvn install -DskiTest'
+                 script {
+              sh 'docker build -t chat-room .'
             }
         }
         stage('run the application'){
